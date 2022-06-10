@@ -1,0 +1,16 @@
+[Unit]
+Description=app.jar service
+
+[Service]
+Type=simple
+PIDFile=/run/app_jar.pid
+User=app
+Group=apps
+ExecStart=/usr/bin/java -jar /opt/apps/app.jar some_out_file "Service is working!"
+StartLimitIntervalSec=60
+StartLimitBurst=3
+KillMode=mixed	
+
+[Install]
+WantedBy=multi-user.target
+
